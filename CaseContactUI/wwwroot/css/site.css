@@ -1,0 +1,39 @@
+﻿
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa !important;
+    /*border: 1px solid grey;*/ 
+}
+
+input[type=submit] {
+    width: auto;
+}
+input, textarea {
+    font-size: 18px;
+    width: 200px;
+}
+label {
+    font-size: 16px;
+}
+
+#theForm {
+    background-color: #d0d0d0;
+    border: 1px solid purple;
+    /*display: inline-block;*/
+    padding: 8px;
+    margin: 2px;
+    width: 450px;
+    float: left;
+}
+#theForm1 {
+    background-color: #d0d0d0;
+    border: 1px solid purple;
+    display: inline-block;
+    padding: 8px;
+    margin: 2px;
+    width: 450px;
+}
+    #theForm input[type=submit] {
+        background-color: green;
+        color: white;
+    }

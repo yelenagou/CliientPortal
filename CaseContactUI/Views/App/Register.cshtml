@@ -1,0 +1,460 @@
+﻿@model RegistrationDto
+@section Styles {
+    <link href="@Url.Content("~/css/form-vaidation.css")" rel="stylesheet" type="text/css" />
+}
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+<div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h2>@ViewBag.Title</h2>
+    <p class="lead">Please enter your contact info. </p>
+</div>
+<div class="row">
+    <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Contact Information</h4>
+
+    </div>
+</div>
+<form method="post" class="need-validation">
+    <div asp-validation-summary="ModelOnly" class="text-danger" validate></div>
+
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <label asp-for="ReasonForContact" class="control-label">Case Type</label>
+            <input asp-for="ReasonForContact" class="form-control d-block w-100" id="reasonforcontact">
+            <div class="invalid-feedback">
+                Please select the reason for contact
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label asp-for="FirstName">First name</label>
+            <input asp-for="FirstName" type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Valid first name is required.
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label asp-for="LastName">Last name</label>
+            <input asp-for="LastName" type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+
+            <div class="invalid-feedback">
+                Valid last name is required.
+            </div>
+        </div>
+    </div><!--end of row-->
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label asp-for="EmailAddress">Email <span class="control-label text-muted">(Optional)</span></label>
+            <input asp-for="EmailAddress" class="form-control" id="email" placeholder="you@example.com">
+            <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label asp-for="TelephoneNumber">Telephone Number </label>
+            <input asp-for="TelephoneNumber" class="form-control" id="telephoneNumber" placeholder="480-363-7344">
+            <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label asp-for="BestTimeToContact" class="control-label">Best Time To Call</label>
+            <input asp-for="BestTimeToContact" class="form-control d-block w-100" id="besttimetocontact">
+            <div class="invalid-feedback">
+                Please select the reason for contact
+            </div>
+        </div>
+    </div><!--end of row-->
+
+
+    <div class="d-md-flex py-2">
+        <div class="custom-control custom-checkbox form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                Are you inquiring on behalf of someone else?
+            </label>
+        </div>
+    </div>
+
+    <div class="d-md-flex border-dark flex-sm-row py-2 mr-4" i>
+        <div class="p-2">
+            <p class="lead">Contact Info </p>
+        </div>
+
+        <div class="p-2">
+            <label asp-for="ThirdPartyFirstName">Your First name</label>
+            <input asp-for="ThirdPartyFirstName" type="text" class="form-control" id="thirdPartyFirstName" placeholder="" value="" required>
+            <span asp-validation-for="ThirdPartyFirstName" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Valid first name is required.
+            </div>
+        </div>
+        <div class="p-2">
+            <label asp-for="ThirdPartyLastName">Your Last name</label>
+            <input asp-for="ThirdPartyLastName" type="text" class="form-control" id="thirdPartyFirstName" placeholder="" value="" required>
+            <span asp-validation-for="ThirdPartyLastName" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Valid last name is required.
+            </div>
+        </div>
+        <div class="p-2">
+            <label asp-for="ThirdPartyEmailAddress">E-mail Address</label>
+            <input asp-for="ThirdPartyEmailAddress" type="text" class="form-control" id="thirdpartyemail" placeholder="" value="" required>
+            <span asp-validation-for="ThirdPartyEmailAddress" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Valid Email is Required.
+            </div>
+        </div>
+        <div class="p-2">
+            <label asp-for="ThirdPartyPhoneNumber">Telephone Number</label>
+            <input asp-for="ThirdPartyPhoneNumber" type="text" class="form-control" id="thirdPartyPhoneNumber" placeholder="" value="" required>
+            <span asp-validation-for="ThirdPartyPhoneNumber" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Valid first name is required.
+            </div>
+        </div>
+        <div class="p-2">
+            <label asp-for="BestTimeToContact">Best Time To Contact</label>
+            <input asp-for="BestTimeToContact" type="text" class="form-control" id="thirdPartyBestTime" placeholder="morning, afternoon, evening" value="" required>
+            <span asp-validation-for="BestTimeToContact" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Valid last name is required.
+            </div>
+        </div>
+        <div class="p-2">
+            <label asp-for="BestWayToContact">Best Way To Contact</label>
+            <input asp-for="BestWayToContact" type="text" class="form-control" id="thirdpartybestway" placeholder="phone, email, mail" value="">
+            <span asp-validation-for="BestWayToContact" class="text-danger"></span>
+
+        </div>
+    </div>
+    <div class="d-sm-inline-flex border-dark flex-sm-column py-2 mr-4">
+        <div class="p-2">
+            <p class="lead">Your Name and Email </p>
+        </div>
+
+        
+       
+        
+    </div>
+    <div class="d-sm-inline-flex border-dark flex-sm-column py-2">
+        <div class="p-2">
+            <p class="lead">Address Info </p>
+        </div>
+
+        <div class="p-2">
+            <label asp-for="ThirdPartyAddress">Address</label>
+            <input asp-for="ThirdPartyAddress" type="text" class="form-control" id="thirdpartyaddress" placeholder="" value="" required>
+            <span asp-validation-for="ThirdPartyAddress" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Validate Address is required
+            </div>
+        </div>
+        <div class="p-2">
+            <label asp-for="ThirdPartyAddressLineTwo">Address Line Two</label>
+            <input asp-for="ThirdPartyAddressLineTwo" type="text" class="form-control" id="thirdpartyaddlinetwo" placeholder="" value="" required>
+            <span asp-validation-for="ThirdPartyAddressLineTwo" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Valid last name is required.
+            </div>
+        </div>
+        <div class="p-2">
+            <label asp-for="ThirdPartyCity">City</label>
+            <input asp-for="ThirdPartyCity" type="text" class="form-control" id="thirdpartybestway" placeholder="" value="">
+            <span asp-validation-for="ThirdPartyCity" class="text-danger"></span>
+
+        </div>
+    </div>
+    <div class="d-sm-inline-flex border-dark flex-sm-column py-2 mr-4">
+        <div class="p-2">
+            <p class="lead">Contact Info </p>
+        </div>
+
+        <div class="p-2">
+            <label asp-for="ThirdPartyState">Your First name</label>
+            <input asp-for="ThirdPartyState" type="text" class="form-control" id="thirdpartystate" placeholder="" value="AZ" required>
+            <span asp-validation-for="ThirdPartyState" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Valid first name is required.
+            </div>
+        </div>
+        <div class="p-2">
+            <label asp-for="ThirdPartyZip">Zip Code</label>
+            <input asp-for="ThirdPartyZip" type="text" class="form-control" id="thirdpartyzip" placeholder="" value="" required>
+            <span asp-validation-for="ThirdPartyZip" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Valid last name is required.
+            </div>
+        </div>
+       
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 my-3">
+            <button class="btn btn-primary btn-sm btn-block" type="submit">Submit Information</button>
+        </div>
+
+    </div>
+
+</form>
+<hr class="mb-4">
+
+<form class="card p-2">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Promo code">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary">Redeem</button>
+        </div>
+    </div>
+</form>
+
+@*<div>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <h2>Register</h2>
+            <p class="lead">Please enter your contact info. </p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Contact Information</h4>
+                <form class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="CaseTypeListId" class="control-label">Case Type</label>
+                                <div class="dropdown dropdown-toggle">
+                                    <select asp-for="CaseTypeListId" id="selectedCaseType" class="form-control custom-select d-block w-100" asp-items="@Model.CaseTypeList"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-muted">&#64;</span>
+                            </div>
+                            <input type="text" class="form-control" id="username" placeholder="Username" required>
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Your username is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for shipping updates.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label for="country">Country</label>
+                            <select class="custom-select d-block w-100" id="country" required>
+                                <option value="">Choose...</option>
+                                <option>United States</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a valid country.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="state">State</label>
+                            <select class="custom-select d-block w-100" id="state" required>
+                                <option value="">Choose...</option>
+                                <option>California</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="zip">Zip</label>
+                            <input type="text" class="form-control" id="zip" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Zip code required.
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="same-address">
+                        <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="thirdparty-info">
+                        <label class="custom-control-label" for="thirdparty-info">Inquiring For Someone Else</label>
+                    </div>
+                    <hr class="mb-4">
+
+                    <h4 class="mb-3">Payment</h4>
+
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                            <label class="custom-control-label" for="credit">Credit card</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="debit">Debit card</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="paypal">Paypal</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Name on card</label>
+                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                            <small class="text-muted">Full name as displayed on card</small>
+                            <div class="invalid-feedback">
+                                Name on card is required
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-number">Credit card number</label>
+                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Credit card number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">Expiration</label>
+                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Expiration date required
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">CVV</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Security code required
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                </form>
+            </div>
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                    <span class="badge badge-secondary badge-pill">3</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Product name</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$12</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Second product</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$8</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Third item</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$5</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between bg-light">
+                        <div class="text-success">
+                            <h6 class="my-0">Promo code</h6>
+                            <small>EXAMPLECODE</small>
+                        </div>
+                        <span class="text-success">-$5</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (USD)</span>
+                        <strong>$20</strong>
+                    </li>
+                </ul>
+
+                <form class="card p-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Promo code">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-secondary">Redeem</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>*@
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="~/lib/bootstrap/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+

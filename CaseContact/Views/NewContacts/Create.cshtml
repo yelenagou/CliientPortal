@@ -1,0 +1,428 @@
+﻿@model CaseContact.ViewModels.NewContactDbo
+
+
+<h2>Make Contact</h2>
+
+<hr />
+
+
+<form asp-action="Create">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="CaseTypeListId" class="control-label">Case Type</label>
+                <div class="dropdown dropdown-toggle">
+                    <select asp-for="CaseTypeListId" id="selectedCaseType" class="form-control" asp-items="@Model.CaseTypeList"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input asp-for="ThirdParty" id="thirdpartycheckbox" type="checkbox" />
+                <label asp-for="ThirdParty" class="control-label">Are you inquiring for someone else?</label>
+                <span asp-validation-for="ThirdParty" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div id="thirdpartyinfo">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label asp-for="ThirdPartyGenderId" class="control-label">Select Your Gender</label>
+                    <div class="dropdown dropdown-toggle">
+                        <select asp-for="ThirdPartyGenderId" id="selectedThirdPartyGender" class="form-control" asp-items="@Model.ThirdPartyGender"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ThirdPartyInformation.FirstName" class="control-label">Third Party First Name</label>
+                    <input asp-for="ThirdPartyInformation.FirstName" class="form-control" />
+                    <span asp-validation-for="ThirdPartyInformation.FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ThirdPartyInformation.LastName" class="control-label">Third Party Last Name</label>
+                    <input asp-for="ThirdPartyInformation.LastName" class="form-control" />
+                    <span asp-validation-for="ThirdPartyInformation.LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ThirdPartyInformation.EmailAddress" class="control-label">Third Party Email</label>
+                    <input asp-for="ThirdPartyInformation.EmailAddress" class="form-control" />
+                    <span asp-validation-for="ThirdPartyInformation.EmailAddress" class="text-danger"></span>
+                </div>
+            </div>
+        </div><!--End Of Row-->
+        <div class="row" id="thirdpartyinfo">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ThirdPartyInformation.TelephoneNumber" class="control-label">Third Party Phone</label>
+                    <input asp-for="ThirdPartyInformation.TelephoneNumber" class="form-control" />
+                    <span asp-validation-for="ThirdPartyInformation.TelephoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ThirdPartyPaying" class="control-label">Is third party paying?</label>
+                    <input asp-for="ThirdPartyPaying" type="checkbox" />
+                    <span asp-validation-for="ThirdPartyPaying" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="hasBeenFiled" class="control-label">Case Been Filed</label>
+                <input asp-for="hasBeenFiled" id="hasbeenfiledcheckbox" type="checkbox" />
+                <span asp-validation-for="hasBeenFiled" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div id="filingInformation">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="FilingInformation.AZSuperirorCourtCaseNumber" class="control-label">AZ Superior Court Case Number</label>
+                    <input asp-for="FilingInformation.AZSuperirorCourtCaseNumber" class="form-control" />
+                    <span asp-validation-for="FilingInformation.AZSuperirorCourtCaseNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="FilingInformation.DateFiled" class="control-label">AZ Superior Court Date Field</label>
+                    <input asp-for="FilingInformation.DateFiled" class="form-control" />
+                    <span asp-validation-for="FilingInformation.DateFiled" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+    <div id="newcontactinfo">
+        <div class="page-header" id="pleaseintroduceyourself">Please Introduce Yourself</div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="NewContactInfo.FirstName" class="control-label">First Name</label>
+                    <input asp-for="NewContactInfo.FirstName" class="form-control" />
+                    <span asp-validation-for="NewContactInfo.FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="NewContactInfo.LastName" class="control-label">Last Name</label>
+                    <input asp-for="NewContactInfo.LastName" class="form-control" />
+                    <span asp-validation-for="NewContactInfo.LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label asp-for="ClientGenderId" class="control-label">Select Your Gender</label>
+                    <div class="dropdown dropdown-toggle">
+                        <select asp-for="ClientGenderId" id="selectedGender" class="form-control" asp-items="@Model.ClientGender"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="NewContactInfo.DateOfBirth" class="control-label">Date Of Birth</label>
+                    <input asp-for="NewContactInfo.DateOfBirth" class="form-control" placeholder="mm/dd/yyyy" />
+                    <span asp-validation-for="NewContactInfo.DateOfBirth" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="NewContactInfo.EmailAddress" class="control-label">Email Address</label>
+                    <input asp-for="NewContactInfo.EmailAddress" class="form-control" placeholder="youremail@email.com" />
+                    <span asp-validation-for="NewContactInfo.EmailAddress" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="page-header">Contact Information</div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BestTimeToContactSelected" class="control-label">Best Time to Contact</label>
+                <div class="dropdown dropdown-toggle">
+                    <select asp-for="BestTimeToContactSelected" id="selectedTimeToContact" class="form-control" asp-items="@Model.BestTimeToContact"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="WayToContactSelected" class="control-label">Best Way to Contact</label>
+                <div class="dropdown dropdown-toggle">
+                    <select asp-for="WayToContactSelected" id="selectedWayToContact" class="form-control" asp-items="@Model.WayToContact"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="NewContactInfo.TelephoneNumber" class="control-label"></label>
+                <input asp-for="NewContactInfo.TelephoneNumber" class="form-control" placeholder="ex 480 888 8888" />
+                <span asp-validation-for="NewContactInfo.TelephoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="NewContaactAddress.AddressLineOne" class="control-label"></label>
+                <input asp-for="NewContaactAddress.AddressLineOne" class="form-control" />
+                <span asp-validation-for="NewContaactAddress.AddressLineOne" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewContaactAddress.AddressLineTwo" class="control-label"></label>
+                <input asp-for="NewContaactAddress.AddressLineTwo" class="form-control" />
+                <span asp-validation-for="NewContaactAddress.AddressLineTwo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NewContaactAddress.AddressCity" class="control-label"></label>
+                <input asp-for="NewContaactAddress.AddressCity" class="form-control" />
+                <span asp-validation-for="NewContaactAddress.AddressCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewContaactAddress.AddressState" class="control-label"></label>
+                <input asp-for="NewContaactAddress.AddressState" class="form-control" placeholder="AZ" />
+                <span asp-validation-for="NewContaactAddress.AddressState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewContaactAddress.AddressZip" class="control-label"></label>
+                <input asp-for="NewContaactAddress.AddressZip" class="form-control" />
+                <span asp-validation-for="NewContaactAddress.AddressZip" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>*@
+        </div>
+    </div>
+    <div class="page-header">Current Attorney Information</div>
+    <div class="CurrentAttorneyInfo">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ExistingAttorney" class="control-label"></label>
+                    <input asp-for="ExistingAttorney" id="hasattorney"type="checkbox" />
+                    <span asp-validation-for="ExistingAttorney" class="text-danger"></span>
+                </div>
+            </div>
+        </div> <!--end of row-->
+        <div id="activeAttorneyInfo">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ActiveAttorneyInformation.FirmName" class="control-label"></label>
+                        <input asp-for="ActiveAttorneyInformation.FirmName" class="form-control" />
+                        <span asp-validation-for="ActiveAttorneyInformation.FirmName" class="text-danger"></span>
+                    </div>
+                </div>
+                <!--change first name-->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="ActiveAttorneyInformation.FirstName" class="control-label"></label>
+                        <input asp-for="ActiveAttorneyInformation.FirstName" class="form-control" />
+                        <span asp-validation-for="ActiveAttorneyInformation.FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="ActiveAttorneyInformation.LastName" class="control-label"></label>
+                        <input asp-for="ActiveAttorneyInformation.LastName" class="form-control" />
+                        <span asp-validation-for="ActiveAttorneyInformation.LastName" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div> <!--end of row-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ActiveAttorneyInformation.TelephoneNumber" class="control-label"></label>
+                        <input asp-for="ActiveAttorneyInformation.TelephoneNumber" class="form-control" />
+                        <span asp-validation-for="ActiveAttorneyInformation.TelephoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="ActiveAttorneyInformation.EmailAddress" class="control-label"></label>
+                        <input asp-for="ActiveAttorneyInformation.EmailAddress" class="form-control" />
+                        <span asp-validation-for="ActiveAttorneyInformation.EmailAddress" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div> <!--end of row-->
+        </div><!--Active Attorney Info Container-->
+    </div>
+    <div class="page-header">Opposing Party Information (e.g. your spourse, your formal spourse)</div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="OpposingPartyInformation.FirstName" class="control-label">First Name</label>
+                <input asp-for="OpposingPartyInformation.FirstName" class="form-control" />
+                <span asp-validation-for="OpposingPartyInformation.FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="OpposingPartyInformation.LastName" class="control-label"></label>
+                <input asp-for="OpposingPartyInformation.LastName" class="form-control" />
+                <span asp-validation-for="OpposingPartyInformation.LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label asp-for="OpposingPartyGenderId" class="control-label">Select Gender</label>
+                <div class="dropdown dropdown-toggle">
+                    <select asp-for="OpposingPartyGenderId" id="selectedOppPartyGender" class="form-control" asp-items="@Model.OpposingPartyGender"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="OpposingPartyInformation.EmailAddress" class="control-label"></label>
+                <input asp-for="OpposingPartyInformation.EmailAddress" class="form-control" placeholder="e. g. youremail@email.com" />
+                <span asp-validation-for="OpposingPartyInformation.EmailAddress" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="OpposingPartyInformation.TelephoneNumber" class="control-label"></label>
+                <input asp-for="OpposingPartyInformation.TelephoneNumber" class="form-control" placeholder="480-555-5555" />
+                <span asp-validation-for="OpposingPartyInformation.TelephoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label asp-for="OpposingPartyHasAttorney" class="control-label">Opposing Party Has Attorney?</label>
+                <input asp-for="OpposingPartyHasAttorney" id="opposingpartyhasatt"type="checkbox" />
+                <span asp-validation-for="OpposingPartyHasAttorney" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div id="opposingPartyAttorney">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="OpposingPartyAttorneyInfo.FirmName" class="control-label"></label>
+                    <input asp-for="OpposingPartyAttorneyInfo.FirmName" class="form-control" />
+                    <span asp-validation-for="OpposingPartyAttorneyInfo.FirmName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="OpposingPartyAttorneyInfo.TelephoneNumber" class="control-label"></label>
+                    <input asp-for="OpposingPartyAttorneyInfo.TelephoneNumber" class="form-control" placeholder="480-555-5555" />
+                    <span asp-validation-for="OpposingPartyAttorneyInfo.TelephoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <textarea asp-for="Notes" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //$("#thirdpatyinfo").hide();
+            $("#filingInformation").hide();
+            $("#thirdpartyinfo").hide();
+            $("#activeAttorneyInfo").hide();
+            $("#opposingPartyAttorney").hide();
+
+
+
+            $("#thirdpartycheckbox").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#thirdpartyinfo").show();
+                    $("#pleaseintroduceyourself").text("About the filing party");
+
+                } else {
+                    $("#thirdpartyinfo").hide();
+                    $("#pleaseintroduceyourself").text("Please tell us a little about yourself");
+
+                }
+            });
+
+            $("#hasbeenfiledcheckbox").click(function () {
+                if ($(this).is(":checked")) {
+
+                    $("#filingInformation").show();
+                } else {
+                    $("#filingInformation").hide();
+
+                }
+
+            });
+
+            $("#hasattorney").click(function () {
+                if ($(this).is(":checked")) {
+
+                    $("#activeAttorneyInfo").show();
+                } else {
+                    $("#activeAttorneyInfo").hide();
+
+                }
+
+
+            });
+
+            $("#opposingpartyhasatt").click(function () { 
+                if ($(this).is(":checked")) {
+                    $("#opposingPartyAttorney").show();
+
+                }
+                else {
+                    $("#opposingPartyAttorney").hide();
+
+
+                }
+
+            });
+            
+        });
+
+    </script>
+  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+
+    }
+}

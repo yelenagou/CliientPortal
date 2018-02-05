@@ -1,0 +1,60 @@
+﻿@model CaseContact.Models.CaseType
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>CaseType</h4>
+
+<hr />
+<div class="row">
+    <input type="hidden" asp-for="Id" id="hiddenField"/>
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" id="hiddenField" />
+
+            <div class="form-group">
+                <label asp-for="CaseTypeDescription" class="control-label"></label>
+                <input asp-for="CaseTypeDescription" class="form-control" />
+                <span asp-validation-for="CaseTypeDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+    @await Component.InvokeAsync("CaseTypeList")</div>
+
+</div>
+
+
+
+@section Scripts {
+<script type="text/javascript">
+
+
+    //$(document).ready(function () {
+    //    var id = { caseTypeId: $("#hiddenField").val() }
+    //    $.ajax(
+    //        {
+    //            type: "POST",
+    //            url: "/CaseType/Edit",
+    //            data: id,
+    //            success: function (id) {
+
+                   
+    //            }
+    //        }
+
+
+</script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
