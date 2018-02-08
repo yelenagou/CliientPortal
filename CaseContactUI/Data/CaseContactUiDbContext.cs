@@ -22,6 +22,12 @@ namespace CaseContactUI.Data
         public DbSet<Attorney> Attorney { get; set; }
         public DbSet<ContactInfo> ContactInfo { get; set; }
         public DbSet<OpposingParty> OpposingParty { get; set; }
+        public DbSet<ListCaseTypes> ListCaseTypes { get; set; }
+        public DbSet<ListGenger> ListGender { get; set; }
+        public DbSet<ListWaysToContact> ListWaysToContact { get; set; }
+        public DbSet<ListBestTimeToContact> ListBestTimeToContact { get; set; }
+      
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -40,6 +46,11 @@ namespace CaseContactUI.Data
            .WithOne(i => i.NewContact)
            .HasForeignKey<OpposingParty>(b => b.Id);
 
+
+            modelBuilder.Entity<NewContact>()
+                .Property(b => b.DateInserted)
+                .HasDefaultValueSql("getdate()");
+              
             
             modelBuilder.Ignore<Registration>();
 
@@ -50,12 +61,7 @@ namespace CaseContactUI.Data
             modelBuilder.Entity<Attorney>().ToTable("Attorney");
             modelBuilder.Entity<ContactInfo>().ToTable("ContactInfo");
             modelBuilder.Entity<OpposingParty>().ToTable("OpposingParty");
-
-
-
-
-
-
+            modelBuilder.Entity<ListCaseTypes>().ToTable("ListCaseTypes");
 
         }
 

@@ -9,6 +9,7 @@ namespace CaseContactUI.Data.Entities
 {
     public class NewContact
     {
+     
         public Guid Id { get; set; }
         [StringLength(40)]
         public string FirstName { get; set; }
@@ -24,12 +25,15 @@ namespace CaseContactUI.Data.Entities
         public bool? HaveSomethingFileWithCourt { get; set; }
         public ThirdParty ThirdPartyInfo {get;set;}
         public ICollection<ContactInfo> ContactInfo { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime DateOfNewContact { get; set; }
         public ICollection<Address> Address { get; set; }
         public ICollection<Attorney> PreviousAttorney { get; set; }
         public OpposingParty OpposingParty { get; set; }
+       
+        [Timestamp]
+        public byte[] NewContactRowVersion { get; set; }
+        public DateTime DateInserted { get; set; }
+
 
     }
-    
+
 }

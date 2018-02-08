@@ -27,6 +27,9 @@ namespace CaseContactUI
             services.AddDbContext<CaseContactUiDbContext>(options =>
                        options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
             services.AddScoped<IMailService, NullMailService>();
+            services.AddScoped<INewContactService, NewContactService>();
+
+            services.AddTransient<NewContactSeeder>();
             services.AddMvc();
 
 
@@ -51,6 +54,8 @@ namespace CaseContactUI
                   "{controller}/{action}/{id?}",
                   new { controller = "App", Action = "Register" });
             });
+
+            
 
         }
     }

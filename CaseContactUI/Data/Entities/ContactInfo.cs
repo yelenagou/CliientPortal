@@ -20,8 +20,8 @@ namespace CaseContactUI.Data.Entities
         public string TwitterAccount { get; set; }
         [DataType(DataType.PhoneNumber)]
         public string MobileNumber { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime DateOfContactInfo { get; set; }
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
         public NewContact NewContact { get; set; }
         public OpposingParty OpposingParty { get; set; }       
        

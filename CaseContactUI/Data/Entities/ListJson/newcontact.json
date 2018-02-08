@@ -1,0 +1,82 @@
+[
+  { 
+    "CaseTypeDescription": "Select Case Type"
+  },
+  {
+   
+    "CaseTypeDescription": "Dissolution With Children"
+  },
+  {
+    "CaseTypeDescription": "Dissolution Without Children"
+  },
+  {
+
+    "CaseTypeDescription": "Legal Separation With Children"
+  },
+  {
+   
+    "CaseTypeDescription": "Legal Separation Without Children"
+  },
+  {
+    
+    "CaseTypeDescription": "Third Party Visitation"
+  },
+  {
+   
+    "CaseTypeDescription": "Anullment"
+  },
+  {
+    
+    "CaseTypeDescription": "Paternity"
+  },
+  {
+   
+    "CaseTypeDescription": "Maternity"
+  },
+  {
+   
+    "CaseTypeDescription": "Establish Legal Decision-Making"
+  },
+  {
+    
+    "CaseTypeDescription": "Establish Legal Decision-Making Parenting Time"
+  },
+  {
+   
+    "CaseTypeDescription": "Modify Legal Decision-Making Parenting Time"
+  },
+  {
+   
+    "CaseTypeDescription": "Establish Legal Decision-Making Parenting Time Child Support"
+  },
+  {
+    "CaseTypeDescription": "Modify Legal Decision-Making Parenting Time Child Support"
+  },
+  {
+    "CaseTypeDescription": "Modify Parenting Time"
+  },
+  {
+    "CaseTypeDescription": "Modify Parenting Time"
+  },
+  {
+    "CaseTypeDescription": "Modify Child Support"
+  },
+  {
+    "CaseTypeDescription": "Modify Child Support Simplified"
+  },
+  {
+    "CaseTypeDescription": "Petition To Enforce"
+  },
+  {
+    "CaseTypeDescription": "Petition For Order To Show Cause Contempt"
+  },
+  {
+    "CaseTypeDescription": "Mediation"
+  },
+  {
+    "CaseTypeDescription": "Arbitration"
+  },
+  {
+    "CaseTypeDescription": "Real Estate Special Commissioner"
+  }
+]

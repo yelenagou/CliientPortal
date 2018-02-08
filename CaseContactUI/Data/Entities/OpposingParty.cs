@@ -21,6 +21,8 @@ namespace CaseContactUI.Data.Entities
         [MaxLength(14)]
         public string SocialSecurity { get; set; }
         public DateTime DateOfBirth { get; set; }
+        [Timestamp]
+        public byte[] OppPartyRowVersion { get; set; }
 
     }
 }

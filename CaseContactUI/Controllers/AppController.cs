@@ -14,11 +14,13 @@ namespace CaseContactUI.Controllers
     {
         private readonly IMailService _mailishere;
         private readonly CaseContactUiDbContext _context;
+        private readonly INewContactService _newContactService;
 
-        public AppController(IMailService mailService, CaseContactUiDbContext context)
+        public AppController(IMailService mailService, INewContactService newContactService, CaseContactUiDbContext context)
         {
               _mailishere = mailService;
               _context = context;
+             _newContactService = newContactService;
         }
         public IActionResult Index()
         {
@@ -41,6 +43,12 @@ namespace CaseContactUI.Controllers
 
         public IActionResult Login()
         {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+
             return View();
         }
         [HttpGet]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,6 +18,9 @@ namespace CaseContactUI.ViewModels
         public string LastName { get; set; }
         [StringLength(14)]
         public string SocialSecurity { get; set; }
+        public SelectList ReasonForContactList { get; set; }
+        public SelectList WaysToContact { get; set; }
+        public SelectList TimeToContact { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string ReasonForContacting { get; set; }
         public string TelephoneNumber { get; set; }

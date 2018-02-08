@@ -13,20 +13,17 @@ namespace CaseContactUI.Data
 {
     public class NewContactSeeder
     {
-        private readonly CaseContactUiDbContext _context;
-        private readonly IHostingEnvironment _hosting;
-        public NewContactSeeder(CaseContactUiDbContext context, IHostingEnvironment hosting)
-        {
-            _context = context;
-            _hosting = hosting;
-        }
+       
+       
         public DateTime DateOfBirthOutput { get; set; }
-        public void Seed()
+      
+        public static void Seed(CaseContactUiDbContext context)
         {
-            _context.Database.EnsureCreated();
-            if (!_context.NewContact.Any())
+
+            context.Database.EnsureCreated();
+            if (!context.NewContact.Any())
             {
-                var newContactout = new NewContact()
+                var newContactSaved = new NewContact()
                 {
                     Id = Guid.NewGuid(),
                     FirstName = "Eliza",
@@ -39,15 +36,76 @@ namespace CaseContactUI.Data
                     SocialSecurity = "888-00-8899",
                     TelephoneNumber = "480-363-8899",
                     Address = new List<Address>()
+                    {
+                        new Address()
+                        {
+                             AddressLineOne = "",
+                             AddressLineTwo = "",
+                             City = "Phoenix",
+                             State = "AZ",
+                             ZipCode = "85210"
+                        }
+                    },
+                    ContactInfo = new List<ContactInfo>()
+                     {
+                         new ContactInfo()
+                         {
+                              EmailAddress = "frank@gmail.com"
+                         }
+                     },
+                    OpposingParty = new OpposingParty()
+                    {
+                        FirstName = "Holly",
+                        LastName = "Ash"
+                    }
+
+
 
 
                 };
-                //var filePath = Path.Combine(_hosting.ContentRootPath,"/Data/art.json");
-                //var json = File.ReadAllText(filePath);
-                //var newContacts = JsonConvert.DeserializeObject<IEnumerable<NewContact>>(json);
-                //_context.NewContact.AddRange(newContacts);
+
+                context.NewContact.Add(newContactSaved);
+
+                List<string> jsonFiles = new List<string>();
+                jsonFiles.Add("Data/Entities/ListJson/newcontact.json");
+                jsonFiles.Add("Data/Entities/ListJson/listgender.json");
+                jsonFiles.Add("Data/Entities/ListJson/listwaystocontact.json");
+
+                foreach (var jsonFile in jsonFiles)
+                {
+                    string filePath = GetFilePath(jsonFile);
+                    string json = GetJsonString(filePath);
+                    var newCaseTypeList = JsonConvert.DeserializeObject<IEnumerable<ListCaseTypes>>(json);
+
+                }
+                NewMethod(filePath, json);
+                context.ListCaseTypes.AddRange(newCaseTypeList);
+                context.SaveChanges();
+
             }
-           
+
+
+        }
+
+        private static void NewMethod(string fileName, string json)
+        {
+            var filePath = GetFilePath(fileName);
+
+             filePath = Path.Combine(Environment.CurrentDirectory, $"{filePath}");
+             json = File.ReadAllText(filePath);
+            var newCaseTypeList = JsonConvert.DeserializeObject<IEnumerable<ListCaseTypes>>(json);
+        }
+
+        private static string GetFilePath(string fileName)
+        {
+            string filePath = Path.Combine(Environment.CurrentDirectory, $"{fileName}");
+            return filePath;
+
+        }
+        private static string GetJsonString(string filePath)
+        {
+           string json = File.ReadAllText(filePath);
+           return json;
         }
     }
 }

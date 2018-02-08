@@ -38,7 +38,7 @@ namespace CaseContactUI.Data.Entities
         public Guid NewContactId { get; set; }
         [ForeignKey("NewContactId")]
         public NewContact NewContact { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime DateInserted { get; set; }
+        [Timestamp]
+        public byte[] TpRowVersion { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace CaseContactUI.Data.Entities
         public string ZipCode { get; set; }
        
         public NewContact NewContact { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime DateInserted { get; set; }
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }

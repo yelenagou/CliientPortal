@@ -34,12 +34,13 @@ namespace CaseContactUI.Migrations
                     b.Property<string>("City")
                         .HasMaxLength(30);
 
-                    b.Property<DateTime>("DateInserted")
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.Property<Guid?>("NewContactId");
 
                     b.Property<Guid?>("OpposingPartyId");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("State")
                         .HasMaxLength(10);
@@ -96,9 +97,6 @@ namespace CaseContactUI.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DateOfContactInfo")
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.Property<string>("EmailAddress");
 
                     b.Property<string>("FacebookAccount")
@@ -109,6 +107,10 @@ namespace CaseContactUI.Migrations
                     b.Property<Guid?>("NewContactId");
 
                     b.Property<Guid?>("OpposingPartyId");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("TelephoneNumber");
 
@@ -124,15 +126,28 @@ namespace CaseContactUI.Migrations
                     b.ToTable("ContactInfo");
                 });
 
+            modelBuilder.Entity("CaseContactUI.Data.Entities.ListCaseTypes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CaseTypeDescription");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ListCaseTypes");
+                });
+
             modelBuilder.Entity("CaseContactUI.Data.Entities.NewContact", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DateOfBirth");
+                    b.Property<DateTime>("DateInserted")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("getdate()");
 
-                    b.Property<DateTime>("DateOfNewContact")
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("DateOfBirth");
 
                     b.Property<string>("FirstName")
                         .HasMaxLength(40);
@@ -143,6 +158,10 @@ namespace CaseContactUI.Migrations
 
                     b.Property<string>("LastName")
                         .HasMaxLength(40);
+
+                    b.Property<byte[]>("NewContactRowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<bool?>("ReadyForRegistration");
 
@@ -170,6 +189,10 @@ namespace CaseContactUI.Migrations
                     b.Property<string>("LastName")
                         .HasMaxLength(40);
 
+                    b.Property<byte[]>("OppPartyRowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
                     b.Property<string>("SocialSecurity")
                         .HasMaxLength(14);
 
@@ -191,9 +214,6 @@ namespace CaseContactUI.Migrations
                     b.Property<string>("BestTimeToContact");
 
                     b.Property<string>("BestWayToContact");
-
-                    b.Property<DateTime>("DateInserted")
-                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("EmailAddress");
 
@@ -217,6 +237,10 @@ namespace CaseContactUI.Migrations
 
                     b.Property<string>("ThirdPartyNotes")
                         .HasMaxLength(300);
+
+                    b.Property<byte[]>("TpRowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("ZipCode")
                         .HasMaxLength(10);
